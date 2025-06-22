@@ -201,7 +201,7 @@ export default function Dashboard() {
           <div className='flex justify-between items-center'>
             <div>
               <h1 className='text-3xl font-bold text-gray-900'>
-                Campaign Dashboard
+                Free sample campaign manager
               </h1>
               <p className='mt-2 text-gray-600'>
                 Manage your campaigns and customer registrations
@@ -341,7 +341,7 @@ export default function Dashboard() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500'
                     placeholder='Enter campaign name'
                   />
                 </div>
@@ -422,7 +422,7 @@ export default function Dashboard() {
                               phone: e.target.value,
                             })
                           }
-                          className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
+                          className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500'
                           placeholder='+1234567890'
                         />
                       </div>
@@ -450,7 +450,7 @@ export default function Dashboard() {
                               otp: e.target.value,
                             })
                           }
-                          className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center text-lg'
+                          className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center text-lg text-gray-900 placeholder-gray-500'
                           placeholder='123456'
                         />
                         <p className='text-sm text-gray-500 mt-1'>
