@@ -51,6 +51,7 @@ export default function CampaignPage() {
       fetchCampaign();
       fetchCustomers();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [campaignId]);
 
   const fetchCampaign = async () => {

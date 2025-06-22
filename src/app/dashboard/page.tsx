@@ -53,6 +53,7 @@ export default function Dashboard() {
         toast.error('Failed to fetch campaigns');
       }
     } catch (error) {
+      console.error('Error fetching campaigns:', error);
       toast.error('Error fetching campaigns');
     } finally {
       setLoading(false);
@@ -69,6 +70,7 @@ export default function Dashboard() {
         toast.error('Failed to fetch customers');
       }
     } catch (error) {
+      console.error('Error fetching customers:', error);
       toast.error('Error fetching customers');
     }
   };
@@ -96,6 +98,7 @@ export default function Dashboard() {
         toast.error(error.error || 'Failed to create campaign');
       }
     } catch (error) {
+      console.error('Error creating campaign:', error);
       toast.error('Error creating campaign');
     }
   };
@@ -125,6 +128,7 @@ export default function Dashboard() {
         toast.error(error.error || 'Failed to register customer');
       }
     } catch (error) {
+      console.error('Error registering customer:', error);
       toast.error('Error registering customer');
     }
   };
@@ -150,7 +154,6 @@ export default function Dashboard() {
       );
 
       if (response.ok) {
-        const result = await response.json();
         toast.success('Customer verified successfully!');
         setShowCustomerModal(false);
         setShowOtpInput(false);
@@ -169,6 +172,7 @@ export default function Dashboard() {
         toast.error(error.error || 'Failed to verify OTP');
       }
     } catch (error) {
+      console.error('Error verifying OTP:', error);
       toast.error('Error verifying OTP');
     }
   };

@@ -7,7 +7,7 @@ import { Campaign } from '@/app/models/Campaign';
 // POST /api/campaigns/[id]/customers/verify - Verify customer OTP
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id: campaignId } = await params;

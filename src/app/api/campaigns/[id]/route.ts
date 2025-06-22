@@ -6,7 +6,7 @@ import { Campaign } from '@/app/models/Campaign';
 // GET /api/campaigns/[id] - Get a specific campaign
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id: campaignId } = await params;

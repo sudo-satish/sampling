@@ -6,7 +6,7 @@ import { Customer } from '@/app/models/Customer';
 // GET /api/campaigns/[id]/customers - Get customers for a campaign
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id: campaignId } = await params;
@@ -38,7 +38,7 @@ export async function GET(
 // POST /api/campaigns/[campaignId]/customers - Register a new customer
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id: campaignId } = await params;
