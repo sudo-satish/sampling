@@ -1,20 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Plus,
-  Calendar,
-  DollarSign,
-  Users,
-  Eye,
-  Edit,
-  Trash2,
-  Play,
-  Pause,
-  CheckCircle,
-  Phone,
-  XCircle,
-} from 'lucide-react';
+import { Plus, Users, Edit, Trash2, CheckCircle, XCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
 
@@ -184,14 +171,6 @@ export default function Dashboard() {
     } catch (error) {
       toast.error('Error verifying OTP');
     }
-  };
-
-  const openCustomerModal = (campaign: Campaign) => {
-    setSelectedCampaign(campaign);
-    setShowCustomerModal(true);
-    setShowOtpInput(false);
-    setCustomerForm({ phone: '', otp: '' });
-    fetchCustomers(campaign._id);
   };
 
   const formatDate = (dateString: string) => {

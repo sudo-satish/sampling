@@ -10,6 +10,7 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   try {
+    const { id: campaignId } = await params;
     const { userId } = await auth();
 
     if (!userId) {
@@ -31,7 +32,7 @@ export async function POST(
     // Find the customer
     const customer = await Customer.findOne({
       phone,
-      campaignId: params.id,
+      campaignId: campaignId,
       businessId: userId,
     });
 
@@ -66,7 +67,7 @@ export async function POST(
     await customer.save();
 
     // Update campaign customer count
-    await Campaign.findByIdAndUpdate(params.id, {
+    await Campaign.findByIdAndUpdate(campaignId, {
       $inc: { customerCount: 1 },
     });
 

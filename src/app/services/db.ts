@@ -1,12 +1,10 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const uri = process.env.MONGODB_URI;
 
-console.log(uri);
-
 const clientOptions = {
-  serverApi: { version: '1', strict: true, deprecationErrors: true },
+  serverApi: { version: '1' as const, strict: true, deprecationErrors: true },
 };
-mongoose.connect(uri, clientOptions);
+mongoose.connect(uri!, clientOptions);
 
 export const db = mongoose.connection;
 

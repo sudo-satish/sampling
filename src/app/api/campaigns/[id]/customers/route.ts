@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { db } from '@/app/services/db';
 import { Customer } from '@/app/models/Customer';
-import { Campaign } from '@/app/models/Campaign';
 
 // GET /api/campaigns/[id]/customers - Get customers for a campaign
 export async function GET(
@@ -10,6 +9,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
+    const { id: campaignId } = await params;
     const { userId } = await auth();
 
     if (!userId) {
@@ -19,7 +19,7 @@ export async function GET(
     await db.asPromise();
 
     const customers = await Customer.find({
-      campaignId: params.id,
+      campaignId: campaignId,
       businessId: userId,
     })
       .sort({ createdAt: -1 })
@@ -41,6 +41,7 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   try {
+    const { id: campaignId } = await params;
     const { userId } = await auth();
 
     if (!userId) {
@@ -62,7 +63,7 @@ export async function POST(
     // Check if customer already exists for this campaign
     const existingCustomer = await Customer.findOne({
       phone,
-      campaignId: params.id,
+      campaignId: campaignId,
     });
 
     if (existingCustomer) {
@@ -79,7 +80,7 @@ export async function POST(
     const customer = new Customer({
       phone,
       name,
-      campaignId: params.id,
+      campaignId: campaignId,
       businessId: userId,
       otp,
       otpExpiresAt,

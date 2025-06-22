@@ -9,6 +9,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
+    const { id: campaignId } = await params;
     const { userId } = await auth();
 
     if (!userId) {
@@ -18,7 +19,7 @@ export async function GET(
     await db.asPromise();
 
     const campaign = await Campaign.findOne({
-      _id: params.id,
+      _id: campaignId,
       businessId: userId,
     }).lean();
 
